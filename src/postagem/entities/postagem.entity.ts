@@ -30,3 +30,4 @@ export class Postagem{
     data: Date;
 
 }
+
