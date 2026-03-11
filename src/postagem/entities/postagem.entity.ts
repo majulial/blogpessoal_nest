@@ -1,6 +1,7 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Tema } from "../../../tema/entities/tema.entity";
 
 // criando tabela diretamente no banco de dados.
 
@@ -28,6 +29,12 @@ export class Postagem{
 
     @UpdateDateColumn() // ATT A DATA NA CRIAÇÃO E NA ATUALIZAÇÃO
     data: Date;
+
+
+    @ManyToOne( () => Tema, (tema) => tema.postagem,{
+        onDelete:"CASCADE"
+    })
+    tema:Tema;  // REPRESENTA A CHAVE ESTRANGEIRA
 
 }
 

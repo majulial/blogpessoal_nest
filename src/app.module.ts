@@ -18,6 +18,7 @@ import { Tema } from '../tema/entities/tema.entity';
       database: 'db_blogpessoal',
       entities:[Postagem, Tema],
       synchronize: true,
+      logging: true, // EXIBE O CODIGO SQL NO CONSOLE DO VSCODE // USAR APENAS EM DESENVOLVIMENTO
     }),
     PostagemModule,
     TemaModule
