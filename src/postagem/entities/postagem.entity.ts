@@ -2,6 +2,7 @@ import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Tema } from "../../../tema/entities/tema.entity";
+import { Usuario } from "../../usuario/entities/usuario.entity";
 
 // criando tabela diretamente no banco de dados.
 
@@ -35,6 +36,11 @@ export class Postagem{
         onDelete:"CASCADE"
     })
     tema:Tema;  // REPRESENTA A CHAVE ESTRANGEIRA
+
+    @ManyToOne( () => Usuario, (usuario) => usuario.postagem,{
+        onDelete:"CASCADE"
+    })
+    usuario:Usuario;
 
 }
 

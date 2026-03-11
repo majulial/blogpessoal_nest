@@ -20,7 +20,8 @@ export class PostagemService {
         //SELECT * FROM tb_postagens
         return this.postagemRepository.find({
             relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
         });
     }
@@ -32,7 +33,8 @@ export class PostagemService {
                 id
             },
                  relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
          });
 
@@ -51,7 +53,8 @@ export class PostagemService {
                     titulo: ILike(`%${titulo}%`)
                 },
                      relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
             });
          }
@@ -61,7 +64,7 @@ export class PostagemService {
         // VERIFICANDO SE EXISTE ID DO TEMA
         await this.temaService.findById(postagem.tema.id);
 
-        
+
             // INSERT INTO tb_postagens (titulo, texto) VALUES (valores digitados pelo usuario);
             return await this.postagemRepository.save(postagem);
 }        

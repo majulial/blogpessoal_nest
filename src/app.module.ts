@@ -4,6 +4,9 @@ import { Postagem } from './postagem/entities/postagem.entity';
 import { PostagemModule } from './postagem/services/postagem.module';
 import { TemaModule } from '../tema/tema.module';
 import { Tema } from '../tema/entities/tema.entity';
+import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
+import { Usuario } from './usuario/entities/usuario.entity';
 
 
 
@@ -16,12 +19,14 @@ import { Tema } from '../tema/entities/tema.entity';
       username: 'root',
       password: 'jujuba',
       database: 'db_blogpessoal',
-      entities:[Postagem, Tema],
+      entities:[Postagem, Tema, Usuario],
       synchronize: true,
       logging: true, // EXIBE O CODIGO SQL NO CONSOLE DO VSCODE // USAR APENAS EM DESENVOLVIMENTO
     }),
     PostagemModule,
-    TemaModule
+    TemaModule,
+    UsuarioModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
