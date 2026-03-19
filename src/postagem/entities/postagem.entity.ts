@@ -1,14 +1,16 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Tema } from "../../../tema/entities/tema.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Usuario } from "../../usuario/entities/usuario.entity";
+import { Tema } from "../../../tema/entities/tema.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 // criando tabela diretamente no banco de dados.
 
 @Entity({name: "tb_postagens"}) // CREATE TABLE tb_postagens
 export class Postagem{
-    @PrimaryGeneratedColumn() //PRIMARY KEY (id) AUTO INCREMENT 
+    @PrimaryGeneratedColumn() 
+    @ApiProperty()//PRIMARY KEY (id) AUTO INCREMENT 
     id: number;
 
 
@@ -17,7 +19,8 @@ export class Postagem{
 
     /* VALIDANDO DADOS */
 
-    @Column({length: 100, nullable: false}) // VARCHAR(100) NOT NULL
+    @Column({length: 100, nullable: false})
+    @ApiProperty() // VARCHAR(100) NOT NULL
     titulo: string;
 
 
@@ -28,17 +31,18 @@ export class Postagem{
     texto: string;
 
 
-    @UpdateDateColumn() // ATT A DATA NA CRIAÇÃO E NA ATUALIZAÇÃO
+    @UpdateDateColumn()
+    @ApiProperty() // ATT A DATA NA CRIAÇÃO E NA ATUALIZAÇÃO
     data: Date;
 
-
+    @ApiProperty()
     @ManyToOne( () => Tema, (tema) => tema.postagem,{
-        onDelete:"CASCADE"
+        onDelete: 'CASCADE'
     })
-    tema:Tema;  // REPRESENTA A CHAVE ESTRANGEIRA
+    tema: Tema;  // REPRESENTA A CHAVE ESTRANGEIRA
 
     @ManyToOne( () => Usuario, (usuario) => usuario.postagem,{
-        onDelete:"CASCADE"
+        onDelete:'CASCADE'
     })
     usuario: Usuario;
 

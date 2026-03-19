@@ -3,6 +3,7 @@ import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Postagem } from "../../src/postagem/entities/postagem.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
     
     
@@ -10,13 +11,16 @@ import { Postagem } from "../../src/postagem/entities/postagem.entity";
     export class Tema {
 
         @PrimaryGeneratedColumn()
+        @ApiProperty()
         id: number;
 
         @Transform(({ value }: TransformFnParams)=> value?.trim())
         @IsNotEmpty()
          @Column({length: 1000, nullable: false}) 
+         @ApiProperty()
         descricao: string;
 
+        @ApiProperty()
         @OneToMany(() => Postagem, (postagem) => postagem.tema)
 
         postagem: Postagem[]; // ARRAY DE RETORNO
