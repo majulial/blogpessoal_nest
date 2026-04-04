@@ -432,7 +432,7 @@ Este projeto está sob licença **MIT** — livre para uso educacional e profiss
 
 
 
-**Júlia — Desenvolvedora Full Stack & Instrutor**
+**Júlia — Desenvolvedora Full Stack**
 
 🔗 **GitHub:** https://github.com/majulial
 
