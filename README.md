@@ -428,11 +428,11 @@ Este projeto está sob licença **MIT** — livre para uso educacional e profiss
 
 ------
 
-## Autor
+## Autora
 
 
 
-**Rafael — Desenvolvedor Full Stack & Instrutor**
+**Júlia — Desenvolvedora Full Stack**
 
 🔗 **GitHub:** https://github.com/majulial
 
